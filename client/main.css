@@ -1,19 +1,48 @@
+/*Non component-specific styles*/
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
   font-family: sans-serif;
+  background-color: #333;
 }
 
 h1 {
   display: inline;
 }
 
-.authorText {
+#navLinksContainer, #exploreContainer {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*Header component styles*/
+header {
+  padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: white;
+}
+
+#authorText {
   font-family: monospace;
   margin-left: 10px;
   font-size: 15px;
 }
 
+/*Nav Component Styles*/
+#navLinksContainer {
+  text-align: center;
+  color: white;
+}
+
 .navLink, .navLink > h3 {
   display: inline;
+  color: white;
 }
 
 .navLink, .navLink:visited {
@@ -24,4 +53,22 @@ h1 {
 
 .navLinkCurrent {
   border-bottom: 3px solid red;
+}
+
+/*Explore component styles*/
+#exploreContainer {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: white;
+  width: 90%;
+  padding: 5px;
+}
+
+#exploreContainer li {
+  font-size: 12px;
+}
+
+#exploreContainerHeaderText {
+  font-weight: bold;
+  margin-left: 30px;
 }

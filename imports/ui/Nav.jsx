@@ -4,11 +4,12 @@ import React, { Component } from 'react';
 export default class Nav extends Component {
   render() {
     return(
-      <div>
+      <section id="navLinksContainer">
         <a className="navLink navLinkCurrent" href="#"><h3>Explore</h3></a> |&nbsp;
         <a className="navLink" href="#"><h3>My Blog</h3></a> |&nbsp;
         <a className="navLink" href="#"><h3>New Post</h3></a>
-      </div>
+        <br /><br />
+      </section>
     );
   }
 }
