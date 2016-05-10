@@ -7,11 +7,12 @@ html, body {
 
 body {
   font-family: sans-serif;
-  background-color: #333;
+  background-color: black;
 }
 
-h1 {
-  display: inline;
+#render-target {
+  background-color: #333;
+  height: 100%;
 }
 
 #navLinksContainer, #exploreContainer {
@@ -26,6 +27,16 @@ header {
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: white;
+  border-bottom: 5px solid black;
+}
+
+h1 {
+  display: inline;
+}
+
+h1 a, h1 a:visited {
+  text-decoration: none;
+  color: black;
 }
 
 #authorText {
@@ -51,14 +62,22 @@ header {
   padding-bottom: 0.5px;
 }
 
+.navLink h3:hover {
+  color: red !important;
+}
+
 .navLinkCurrent {
   border-bottom: 3px solid red;
+}
+
+.navLinkCurrent h3:hover {
+  color: white !important;
 }
 
 /*Explore component styles*/
 #exploreContainer {
   border: 1px solid transparent;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: white;
   width: 90%;
   padding: 5px;
@@ -66,9 +85,20 @@ header {
 
 #exploreContainer li {
   font-size: 12px;
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
 }
 
 #exploreContainerHeaderText {
   font-weight: bold;
   margin-left: 30px;
+}
+
+/*Footer component styles*/
+footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 15px;
+  background-color: black;
 }

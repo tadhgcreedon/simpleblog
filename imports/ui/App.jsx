@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Header from './Header.jsx';
 import Nav from './Nav.jsx';
 import Explore from './Explore.jsx';
+import Footer from './Footer.jsx';
 
 export default class App extends Component {
   render() {
@@ -11,10 +12,14 @@ export default class App extends Component {
       <div>
         {/*Enclosing div is required by React to render components*/}
         <Header />
-          <br />
-        <Nav />
-          <br />
-        <Explore />
+        <div id="contentContainer">
+            <br />
+          <Nav />
+            <br />
+          <Explore />
+            <br />
+        </div>
+        <Footer />
       </div>
     );
   }
