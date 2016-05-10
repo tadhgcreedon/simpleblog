@@ -45,6 +45,27 @@ h1 a, h1 a:visited {
   font-size: 15px;
 }
 
+#loginContainer {
+  float:right;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+}
+#loginContainer:hover {
+  background-color: gray;
+}
+
+#login-sign-in-link {
+  text-decoration: none !important;
+}
+
+#login-dropdown-list {
+  position: absolute;
+  top: 40px;
+  left: -190px;
+}
+
+
 /*Nav Component Styles*/
 #navLinksContainer {
   text-align: center;
