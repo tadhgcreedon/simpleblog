@@ -11,3 +11,17 @@ h1 {
   margin-left: 10px;
   font-size: 15px;
 }
+
+.navLink, .navLink > h3 {
+  display: inline;
+}
+
+.navLink, .navLink:visited {
+  text-decoration: none;
+  color: black;
+  padding-bottom: 0.5px;
+}
+
+.navLinkCurrent {
+  border-bottom: 3px solid red;
+}
