@@ -1,1 +1,13 @@
+body {
+  font-family: sans-serif;
+}
 
+h1 {
+  display: inline;
+}
+
+.authorText {
+  font-family: monospace;
+  margin-left: 10px;
+  font-size: 15px;
+}
