@@ -13,10 +13,9 @@ export default class Explore extends Component {
           <li><a href="#">Example User 4</a></li>
           <li><a href="#">Example User 5</a></li>
         </ul>
-
         {
-          !this.props.currentUser ?
-          <div><hr /><span id="createYourOwnBlogText">Or create an account and make your own!</span></div> : null
+          this.props.currentUser ?
+          null : <div><hr /><span id="createYourOwnBlogText">Or create an account and make your own!</span></div>
         }
       </section>
     );

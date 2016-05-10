@@ -20,7 +20,7 @@ class App extends Component {
             <Nav /> : null
           }
           <br />
-          <Explore />
+          <Explore currentUser={this.props.currentUser} />
             <br />
         </div>
         <Footer />
