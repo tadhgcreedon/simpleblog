@@ -47,12 +47,13 @@ h1 a, h1 a:visited {
 
 #loginContainer {
   float:right;
-  border: 1px solid gray;
+  border: 2px solid gray;
   border-radius: 5px;
   padding: 10px;
 }
 #loginContainer:hover {
-  background-color: gray;
+  background-color: black;
+  border: 2px solid black;
   color: white;
 }
 
@@ -100,9 +101,16 @@ h1 a, h1 a:visited {
 #exploreContainer {
   border: 1px solid transparent;
   border-radius: 3px;
-  background-color: white;
+  background-color: #27b6db;
   width: 90%;
   padding: 5px;
+}
+
+#exploreContainer ul {
+  list-style: none;
+  border-left: 1px dotted rgba(0, 0, 0, 0.5);
+  padding-left: 10px;
+  margin-left: 25px;
 }
 
 #exploreContainer li {
@@ -112,7 +120,7 @@ h1 a, h1 a:visited {
 }
 
 #exploreContainer li a, #exploreContainer li a:visited {
-  color: #27b6db;
+  color: rgba(255, 255, 255, 0.9);
   font-weight: bold;
   text-decoration: none;
 }
