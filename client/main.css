@@ -53,9 +53,10 @@ h1 a, h1 a:visited {
 }
 #loginContainer:hover {
   background-color: gray;
+  color: white;
 }
 
-#login-sign-in-link {
+#login-sign-in-link, #login-name-link {
   text-decoration: none !important;
 }
 
