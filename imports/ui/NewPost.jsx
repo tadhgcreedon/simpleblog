@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import ReactDOM from 'react-dom';
+import { createContainer } from 'meteor/react-meteor-data';
+import { Router } from 'react-router';
 
-export default class NewPost extends Component {
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import { Posts } from '../api/posts.js';
+
+class NewPost extends Component {
+  handleSubmit(event) {
+    event.preventDefault();
+    const owner = this.props.currentUser.username
+    const title = ReactDOM.findDOMNode(this.refs.title).value.trim();
+    const description = ReactDOM.findDOMNode(this.refs.description).value.trim();
+
+    Posts.insert({
+      owner: owner, //owner
+      title: title, //title
+      description: description, //content
+      createdAt: new Date(), //current time
+    });
+    // Router.browserHistory.push('/');
+  }
   render() {
     return(
       <section id="newPostContainer" className="contentContainer">
-        <form method="post" action="/blog">
-          <label for="titleInput">
-            Title<br />
-            <input required type="text" maxLength="100" name="titleInput" />
-          </label>
+        <form method="post" action={"/blog/" + this.props.currentUser.username} onSubmit={this.handleSubmit.bind(this)}>
+          <input ref="title" required type="text" maxLength="100" placeholder="Title" name="titleInput" />
           <br />
-          <label for="descriptionInput">
-            Content<br />
-            <textarea required rows="15" maxLength="1500" name="descriptionInput" />
-          </label>
+          <textarea ref="description" required rows="15" maxLength="1500" placeholder="Content" name="descriptionInput" />
           <br />
           <button type="submit">Post</button>
         </form>
@@ -22,3 +35,9 @@ export default class NewPost extends Component {
     );
   }
 }
+
+export default createContainer(() => {
+  return {
+    currentUser: Meteor.user(),
+  };
+}, NewPost);

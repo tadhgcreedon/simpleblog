@@ -1,27 +1,62 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Link } from 'react-router';
 
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import { Posts } from '../api/posts.js';
 
-export default class Blog extends Component {
+class Blog extends Component {
+  noPosts() {
+    if(this.props.params.owner === this.props.currentUser.username) {
+      return(
+        <p>Nothing here yet. Make <Link to="/newPost">your first</Link>!</p>
+      );
+    }
+    else {
+      return(
+        <p>User has no posts.</p>
+      );
+    }
+  }
+
+  showPosts() {
+    return this.props.posts.map((post) => {
+      return (
+        <Post key={post._id} owner={post.owner} title={post.title} content={post.description} date={post.createdAt} />
+      );
+    });
+  }
+
   render() {
     return(
-      <section id="blogContainer" className="contentContainer" style={temporaryTextStyle}>
+      <section id="blogContainer" className="contentContainer">
         {
-          this.props.posts.count < 1 || this.props.posts.count === undefined ?
-          <p>User has no posts.</p> :
-          <p>User has posts</p>
+          this.props.numberOfPosts < 1 || this.props.numberOfPosts === undefined ?
+          this.noPosts() :
+          this.showPosts()
         }
       </section>
     );
   }
 }
 
-var temporaryTextStyle = {color: "white", padding: "5px"};
+class Post extends Component {
+  render() {
+    return(
+        <p>Post</p>
+    );
+  }
+}
+
+Blog.propTypes = {
+  posts: PropTypes.array.isRequired,
+  numberOfPosts: PropTypes.number.isRequired,
+};
 
 export default createContainer(() => {
   return {
-    posts: Posts.find({}).fetch(),
+    currentUser: Meteor.user(),
+    posts: Posts.find({owner: Meteor.user().username }).fetch(),
+    numberOfPosts: Posts.find({owner: Meteor.user().username }).count(),
   };
 }, Blog);

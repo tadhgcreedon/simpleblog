@@ -26,7 +26,7 @@ class App extends Component {
           {this.props.children}
             <br />
         </div>
-        <Footer />
+        {/*<Footer />*/}
       </div>
     );
   }
