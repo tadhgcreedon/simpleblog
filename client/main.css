@@ -15,7 +15,7 @@ body {
   height: 100%;
 }
 
-#navLinksContainer, #exploreContainer, #newPostContainer {
+#navLinksContainer, #exploreContainer, #blogContainer, #newPostContainer {
   width: 95%;
   margin-left: auto;
   margin-right: auto;
@@ -147,9 +147,18 @@ h1 a, h1 a:visited {
   margin-left: 5px;
 }
 
+/*Blog component styles*/
+#blogContainer {
+  background-color: #27b6db;
+}
+
+#blogContainer p {
+  margin-left: 25px;
+}
+
 /*NewPost component styles*/
 #newPostContainer {
-  background-color: white;
+  background-color: gray;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -190,7 +199,8 @@ h1 a, h1 a:visited {
 }
 
 #newPostContainer button:hover {
-  background-color: gray;
+  background-color: black;
+  color: white;
 }
 
 /*Footer component styles*/
