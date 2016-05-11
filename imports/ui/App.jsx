@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
 // Import UI components
@@ -6,6 +6,9 @@ import Header from './Header.jsx';
 import Nav from './Nav.jsx';
 import Explore from './Explore.jsx';
 import Footer from './Footer.jsx';
+
+//Import DB Collections
+import { Posts } from '../api/posts.js';
 
 class App extends Component {
   render() {
@@ -29,8 +32,13 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  posts: PropTypes.array.isRequired,
+};
+
 export default createContainer(() => {
   return {
     currentUser: Meteor.user(),
+    posts: Posts.find({}).fetch(),
   };
 }, App);

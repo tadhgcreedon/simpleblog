@@ -10,8 +10,8 @@ export const renderRoutes = () => (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Explore} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/newPost" component={NewPost} />
+      <Route path="blog/:id" component={Blog} />
+      <Route path="newPost" component={NewPost} />
     </Route>
   </Router>
 );

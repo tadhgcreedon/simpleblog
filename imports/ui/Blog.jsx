@@ -12,3 +12,9 @@ export default class Blog extends Component {
 }
 
 var temporaryTextStyle = {color: "white", padding: "5px"};
+
+// export default createContainer(() => {
+//   return {
+//     users:
+//   };
+// }, Blog);

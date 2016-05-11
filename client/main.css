@@ -28,6 +28,11 @@ body {
   padding: 5px;
 }
 
+hr {
+  border: 1px solid #333;
+  width: 99%;
+}
+
 /*Header component styles*/
 header {
   padding: 10px;
