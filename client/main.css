@@ -111,6 +111,16 @@ h1 a, h1 a:visited {
   padding-bottom: 2.5px;
 }
 
+#exploreContainer li a, #exploreContainer li a:visited {
+  color: #27b6db;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#exploreContainer li a:hover {
+  text-decoration: underline;
+}
+
 #exploreContainerHeaderText {
   font-weight: bold;
   margin-left: 30px;
