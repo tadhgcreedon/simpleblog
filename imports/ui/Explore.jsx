@@ -5,7 +5,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 class Explore extends Component {
   render() {
     return(
-      <section id="exploreContainer">
+      <section id="exploreContainer" className="contentContainer">
         <p id="exploreContainerHeaderText">Check Out Blogs By: </p>
         <ul>
           <li><a href="/blog">Example User 1</a></li>

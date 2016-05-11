@@ -15,10 +15,17 @@ body {
   height: 100%;
 }
 
-#navLinksContainer, #exploreContainer {
+#navLinksContainer, #exploreContainer, #newPostContainer {
   width: 95%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.contentContainer {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  width: 90%;
+  padding: 5px;
 }
 
 /*Header component styles*/
@@ -99,16 +106,12 @@ h1 a, h1 a:visited {
 
 /*Explore component styles*/
 #exploreContainer {
-  border: 1px solid transparent;
-  border-radius: 3px;
   background-color: #27b6db;
-  width: 90%;
-  padding: 5px;
 }
 
 #exploreContainer ul {
   list-style: none;
-  border-left: 1px dotted rgba(0, 0, 0, 0.5);
+  border-left: 1px dotted #333;
   padding-left: 10px;
   margin-left: 25px;
 }
@@ -137,6 +140,52 @@ h1 a, h1 a:visited {
 #createYourOwnBlogText {
   font-size: 12px;
   margin-left: 5px;
+}
+
+/*NewPost component styles*/
+#newPostContainer {
+  background-color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#newPostContainer label {
+    font-weight: bold;
+}
+
+#newPostContainer label {
+  margin-left: 2.5%;
+}
+
+#newPostContainer input[type="text"], #newPostContainer input[type="text"]:active,
+#newPostContainer textarea, #newPostContainer textarea:active {
+  -webkit-appearance: none;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 16px;
+  width: 95%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#newPostContainer textarea {
+  width: 95%;
+  resize: none;
+}
+
+#newPostContainer button {
+  border: 0px solid transparent;
+  width: 60px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 2%;
+}
+
+#newPostContainer button:hover {
+  background-color: gray;
 }
 
 /*Footer component styles*/
