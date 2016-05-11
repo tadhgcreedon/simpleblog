@@ -156,6 +156,16 @@ h1 a, h1 a:visited {
   margin-left: 25px;
 }
 
+.post {
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+}
+
+.postTitle {
+  font-size: 20px;
+}
+
 /*NewPost component styles*/
 #newPostContainer {
   background-color: gray;

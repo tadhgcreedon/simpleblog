@@ -41,9 +41,17 @@ class Blog extends Component {
 }
 
 class Post extends Component {
+
   render() {
+    let date = this.props.date.toString();
     return(
-        <p>Post</p>
+      <div className="post">
+        <pre>
+        <strong className="postTitle">{this.props.title}</strong>&nbsp;|&nbsp;
+        by <em>{this.props.owner}</em> at {date} <br/><br/>
+        {this.props.content}
+        </pre>
+      </div>
     );
   }
 }
