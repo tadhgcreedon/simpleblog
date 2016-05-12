@@ -162,11 +162,21 @@ h1 a, h1 a:visited {
   margin-left: 25px;
 }
 
+.firstPostLink, .firstPostLink:visited {
+  color:black;
+}
+
+.firstPostLink:hover {
+  color: white;
+  text-decoration: underline;
+}
+
 .post {
   background-color: white;
   padding: 5px;
   margin: 5px;
   position: relative;
+  padding-left: 10px;
 }
 
 .postTitle {
@@ -186,14 +196,27 @@ h1 a, h1 a:visited {
   border-radius: 2px;
   width: 20px;
   margin-right: 3px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding-left: 5px;
 }
 
 #modifyPostContainer button:first-child {
   background-color: goldenrod;
 }
+#modifyPostContainer button:first-child:hover {
+  background-color: white;
+  color: goldenrod;
+  border: 2px solid goldenrod;
+}
 
 #modifyPostContainer button:last-child {
   background-color: red;
+}
+#modifyPostContainer button:last-child:hover {
+  background-color: white;
+  color: red;
+  border: 2px solid red;
 }
 
 /*NewPost component styles*/
@@ -233,6 +256,7 @@ h1 a, h1 a:visited {
   border-radius: 5px;
   padding: 10px;
   margin-left: 1%;
+  cursor: pointer;
 }
 
 #newPostContainer button:hover {

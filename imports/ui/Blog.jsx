@@ -8,7 +8,7 @@ class Blog extends Component {
   noPosts() {
     if(this.props.currentUser !== null && this.props.currentUser !== undefined && this.props.params.owner === this.props.currentUser.username) {
       return(
-        <p>Nothing here yet. Make <Link to="/newPost">your first post</Link>!</p>
+        <p>Nothing here yet. Make <Link to="/newPost" className="firstPostLink">your first post</Link>!</p>
       );
     }
     else {
