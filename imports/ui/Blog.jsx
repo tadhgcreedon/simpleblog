@@ -2,14 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Link } from 'react-router';
 
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import { Posts } from '../api/posts.js';
 
 class Blog extends Component {
   noPosts() {
-    if(this.props.params.owner === this.props.currentUser.username) {
+    if(this.props.currentUser !== null && this.props.currentUser !== undefined && this.props.params.owner === this.props.currentUser.username) {
       return(
-        <p>Nothing here yet. Make <Link to="/newPost">your first</Link>!</p>
+        <p>Nothing here yet. Make <Link to="/newPost">your first post</Link>!</p>
       );
     }
     else {
@@ -19,8 +18,8 @@ class Blog extends Component {
     }
   }
 
-  showPosts() {
-    return this.props.posts.map((post) => {
+  showPosts(userPosts) {
+    return userPosts.map((post) => {
       return (
         <Post key={post._id} owner={post.owner} title={post.title} content={post.description} date={post.createdAt} />
       );
@@ -28,20 +27,29 @@ class Blog extends Component {
   }
 
   render() {
-    return(
-      <section id="blogContainer" className="contentContainer">
-        {
-          this.props.numberOfPosts < 1 || this.props.numberOfPosts === undefined ?
-          this.noPosts() :
-          this.showPosts()
-        }
-      </section>
-    );
+    if(this.props.posts !== null) {
+      userPosts = this.props.posts.filter(post => post.owner === this.props.params.owner);
+      return(
+        <section id="blogContainer" className="contentContainer">
+          {
+            userPosts.length < 1 || userPosts.length === undefined ?
+            this.noPosts() :
+            this.showPosts(userPosts)
+          }
+        </section>
+      );
+    }
+    else {
+      return(
+        <section id="blogContainer" className="contentContainer">
+          <p>Error retrieving posts.</p>
+        </section>
+      )
+    }
   }
 }
 
 class Post extends Component {
-
   render() {
     let date = this.props.date.toString();
     return(
@@ -58,13 +66,11 @@ class Post extends Component {
 
 Blog.propTypes = {
   posts: PropTypes.array.isRequired,
-  numberOfPosts: PropTypes.number.isRequired,
 };
 
 export default createContainer(() => {
   return {
     currentUser: Meteor.user(),
-    posts: Posts.find({owner: Meteor.user().username }).fetch(),
-    numberOfPosts: Posts.find({owner: Meteor.user().username }).count(),
+    posts: Posts.find({}).fetch(),
   };
 }, Blog);

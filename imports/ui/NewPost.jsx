@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Router } from 'react-router';
+import { Router, Link } from 'react-router';
 
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import { Posts } from '../api/posts.js';
@@ -22,17 +22,25 @@ class NewPost extends Component {
     // Router.browserHistory.push('/');
   }
   render() {
-    return(
-      <section id="newPostContainer" className="contentContainer">
-        <form method="post" action={"/blog/" + this.props.currentUser.username} onSubmit={this.handleSubmit.bind(this)}>
-          <input ref="title" required type="text" maxLength="100" placeholder="Title" name="titleInput" />
-          <br />
-          <textarea ref="description" required rows="15" maxLength="1500" placeholder="Content" name="descriptionInput" />
-          <br />
-          <button type="submit">Post</button>
-        </form>
-      </section>
-    );
+    if(this.props.currentUser !== null && this.props.currentUser !== undefined){
+      return(
+        <section id="newPostContainer" className="contentContainer">
+          <form method="post" action={"/blog/" + this.props.currentUser.username} onSubmit={this.handleSubmit.bind(this)}>
+            <input ref="title" required type="text" maxLength="100" placeholder="Title" name="titleInput" />
+            <br />
+            <textarea ref="description" required rows="15" maxLength="1500" placeholder="Content" name="descriptionInput" />
+            <br />
+            <button type="submit"><Link className="submitPostLink" to={"/blog/" + this.props.currentUser.username}>Post</Link></button>
+          </form>
+        </section>
+      );
+    }
+    else {
+      return(
+        <section id="newPostContainer" className="contentContainer">
+        </section>
+      );
+    }
   }
 }
 
