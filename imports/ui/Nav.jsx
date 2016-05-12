@@ -5,7 +5,6 @@ import { IndexLink, Link } from 'react-router';
 // Links to Explore all blogs, Current user's blog posts and new post form
 export default class Nav extends Component {
   render() {
-    console.log("rendering navbar");
     return(
       <section id="navLinksContainer">
         <IndexLink className="navLink" activeClassName="navLinkCurrent" to="/"><h3>Explore</h3></IndexLink> |&nbsp;

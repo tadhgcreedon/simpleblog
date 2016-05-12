@@ -21,7 +21,7 @@ class Blog extends Component {
   showPosts(userPosts) {
     return userPosts.map((post) => {
       return (
-        <Post key={post._id} id={post._id} owner={post.owner} title={post.title} content={post.description} date={post.createdAt} />
+        <Post key={post._id} post={post} />
       );
     });
   }
@@ -51,17 +51,17 @@ class Blog extends Component {
 
 class Post extends Component {
   render() {
-    let date = this.props.date.toString();
+    let date = this.props.post.createdAt.toString();
     return(
       <div className="post">
         <pre>
-        <strong className="postTitle">{this.props.title}</strong>&nbsp;|&nbsp;
-        by <em>{this.props.owner}</em> at {date} <br/><br/>
+        <strong className="postTitle">{this.props.post.title}</strong>&nbsp;|&nbsp;
+        by <em>{this.props.post.owner}</em> at {date} <br/><br/>
         {this.props.content}
         </pre>
         {
 
-          <ModifyPost postId={this.props.id} />
+          <ModifyPost post={this.props.post} />
         }
       </div>
     );
@@ -69,11 +69,15 @@ class Post extends Component {
 }
 
 class ModifyPost extends Component {
+  deletePost(){
+    console.log("Deleting task #" + this.props.post._id);
+    Posts.remove(this.props.post._id);
+  }
   render(){
     return(
       <div id="modifyPostContainer">
         <button>E</button>
-        <button>X</button>
+        <button onClick={this.deletePost.bind(this)}>X</button>
       </div>
     );
   }
