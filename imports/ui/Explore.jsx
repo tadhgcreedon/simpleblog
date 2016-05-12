@@ -6,9 +6,18 @@ import { Link } from 'react-router';
 class Explore extends Component {
   listUserBlogs(){
     return this.props.users.map((user) => {
-      return (
-        <UserBlogLink key={user._id} userName={user.username} />
-      );
+      if(this.props.currentUser === null){
+        return (
+          <UserBlogLink key={user._id} userName={user.username} />
+        );
+      }
+      else {
+        if(user._id !== this.props.currentUser._id) {
+          return (
+            <UserBlogLink key={user._id} userName={user.username} />
+          );
+        }
+      }
     });
   }
 
