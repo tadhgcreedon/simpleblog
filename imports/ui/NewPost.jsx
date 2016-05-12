@@ -6,6 +6,7 @@ import { Router, Link } from 'react-router';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import { Posts } from '../api/posts.js';
 
+
 class NewPost extends Component {
   handleSubmit(event) {
     event.preventDefault();
@@ -19,7 +20,7 @@ class NewPost extends Component {
       description: description, //content
       createdAt: new Date(), //current time
     });
-    // Router.browserHistory.push('/');
+    window.location = "blog/" + owner;
   }
   render() {
     if(this.props.currentUser !== null && this.props.currentUser !== undefined){
@@ -30,7 +31,7 @@ class NewPost extends Component {
             <br />
             <textarea ref="description" required rows="15" maxLength="1500" placeholder="Content" name="descriptionInput" />
             <br />
-            <button type="submit"><Link className="submitPostLink" to={"/blog/" + this.props.currentUser.username}>Post</Link></button>
+            <button type="submit">Post</button>
           </form>
         </section>
       );

@@ -21,7 +21,7 @@ class Blog extends Component {
   showPosts(userPosts) {
     return userPosts.map((post) => {
       return (
-        <Post key={post._id} owner={post.owner} title={post.title} content={post.description} date={post.createdAt} />
+        <Post key={post._id} id={post._id} owner={post.owner} title={post.title} content={post.description} date={post.createdAt} />
       );
     });
   }
@@ -59,6 +59,21 @@ class Post extends Component {
         by <em>{this.props.owner}</em> at {date} <br/><br/>
         {this.props.content}
         </pre>
+        {
+
+          <ModifyPost postId={this.props.id} />
+        }
+      </div>
+    );
+  }
+}
+
+class ModifyPost extends Component {
+  render(){
+    return(
+      <div id="modifyPostContainer">
+        <button>E</button>
+        <button>X</button>
       </div>
     );
   }
@@ -71,6 +86,6 @@ Blog.propTypes = {
 export default createContainer(() => {
   return {
     currentUser: Meteor.user(),
-    posts: Posts.find({}).fetch(),
+    posts: Posts.find({}, { sort: { createdAt: -1 } }).fetch(),
   };
 }, Blog);

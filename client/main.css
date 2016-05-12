@@ -122,6 +122,8 @@ h1 a, h1 a:visited {
 }
 
 #exploreContainer li {
+  display: inline;
+  margin-right: 10px;
   font-size: 14px;
   padding-top: 2.5px;
   padding-bottom: 2.5px;
@@ -131,6 +133,10 @@ h1 a, h1 a:visited {
   color: rgba(255, 255, 255, 0.9);
   font-weight: bold;
   text-decoration: none;
+}
+
+#exploreContainer li:nth-child(even) a {
+  color: black;
 }
 
 #exploreContainer li a:hover {
@@ -160,10 +166,34 @@ h1 a, h1 a:visited {
   background-color: white;
   padding: 5px;
   margin: 5px;
+  position: relative;
 }
 
 .postTitle {
   font-size: 20px;
+}
+
+#modifyPostContainer {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+#modifyPostContainer button {
+  -webkit-appearance: none;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  width: 20px;
+  margin-right: 3px;
+}
+
+#modifyPostContainer button:first-child {
+  background-color: goldenrod;
+}
+
+#modifyPostContainer button:last-child {
+  background-color: red;
 }
 
 /*NewPost component styles*/
@@ -180,6 +210,7 @@ h1 a, h1 a:visited {
   border: 1px solid gray;
   border-radius: 3px;
   padding: 5px;
+  padding-left: 10px;
   display: block;
   width: 97%;
   margin-left: auto;
@@ -201,7 +232,7 @@ h1 a, h1 a:visited {
   width: 60px;
   border-radius: 5px;
   padding: 10px;
-  margin-left: 1.25%;
+  margin-left: 1%;
 }
 
 #newPostContainer button:hover {
