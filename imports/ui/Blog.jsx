@@ -66,6 +66,10 @@ class Post extends Component {
 
       // check if text has changed
       if(title !== this.props.post.title || description !== this.props.post.description) {
+        if(title === "" || description === "") {
+          alert("Fields cannot be empty.");
+          return;
+        }
         console.log("updating");
         Posts.update(this.props.post._id, {
           $set: { title: title, description: description, createdAt: new Date(), },
