@@ -180,7 +180,23 @@ h1 a, h1 a:visited {
 }
 
 .postTitle {
+  -webkit-appearance:none;
+  border: none;
   font-size: 20px;
+  -webkit-text-fill-color: #000000;
+}
+
+.postDescription {
+  -webkit-appearance:none;
+  outline: none;
+  resize: none;
+  border:none;
+  width: 99%;
+  -webkit-text-fill-color: #000000;
+}
+
+.post p {
+  margin-left: 0px !important;
 }
 
 #modifyPostContainer {
@@ -219,6 +235,18 @@ h1 a, h1 a:visited {
   color: red;
   border: 2px solid red;
   font-weight: bold;
+}
+
+#modifyPostContainer button:active {
+  color:black !important;
+}
+
+
+.contentEditable {
+  border: 1px solid gray;
+  background-color: lightgray;
+  padding: 5px;
+  outline: none;
 }
 
 /*NewPost component styles*/

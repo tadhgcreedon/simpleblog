@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Link } from 'react-router';
 
@@ -50,17 +51,50 @@ class Blog extends Component {
 }
 
 class Post extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      postEditable: false,
+    };
+  }
+  editPost() {
+    if(this.state.postEditable === true){
+
+      const title = ReactDOM.findDOMNode(this.refs.title).value.trim();
+      const description = ReactDOM.findDOMNode(this.refs.description).value.trim();
+
+      // check if text has changed
+      if(title !== this.props.post.title || description !== this.props.post.description) {
+        console.log("updating");
+        Posts.update(this.props.post._id, {
+          $set: { title: title, description: description, createdAt: new Date(), },
+        });
+      }
+
+    }
+    this.setState({
+      postEditable: !this.state.postEditable,
+    });
+  }
   render() {
     let date = this.props.post.createdAt.toString();
+    const editableClassName = this.state.postEditable ? "contentEditable " : "";
+
     return(
       <div className="post">
         <pre>
-        <strong className="postTitle">{this.props.post.title}</strong>&nbsp;|&nbsp;
-        by <em>{this.props.post.owner}</em> at {date} <br/><br/>
-        {this.props.post.description}
+        <input ref="title" className={editableClassName + "postTitle"} defaultValue={this.props.post.title}
+        disabled={!this.state.postEditable} />
+
+        &nbsp;|&nbsp;
+
+        by <em>{this.props.post.owner}</em> at {date} <br/><br/><hr/>
+
+        <textarea className={editableClassName + "postDescription"} ref="description" defaultValue={this.props.post.description} disabled={!this.state.postEditable} />
         </pre>
         {
-          <ModifyPost post={this.props.post} />
+          <ModifyPost post={this.props.post} editPostHandler={this.editPost.bind(this)}/>
         }
       </div>
     );
@@ -72,10 +106,13 @@ class ModifyPost extends Component {
     console.log("Deleting task #" + this.props.post._id);
     Posts.remove(this.props.post._id);
   }
+  editPost() {
+    this.props.editPostHandler();
+  }
   render(){
     return(
       <div id="modifyPostContainer">
-        <button>E</button>
+        <button onClick={this.editPost.bind(this)}>E</button>
         <button onClick={this.deletePost.bind(this)}>X</button>
       </div>
     );
