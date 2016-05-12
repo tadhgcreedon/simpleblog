@@ -57,10 +57,9 @@ class Post extends Component {
         <pre>
         <strong className="postTitle">{this.props.post.title}</strong>&nbsp;|&nbsp;
         by <em>{this.props.post.owner}</em> at {date} <br/><br/>
-        {this.props.content}
+        {this.props.post.description}
         </pre>
         {
-
           <ModifyPost post={this.props.post} />
         }
       </div>
