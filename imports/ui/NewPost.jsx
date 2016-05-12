@@ -10,17 +10,22 @@ import { Posts } from '../api/posts.js';
 class NewPost extends Component {
   handleSubmit(event) {
     event.preventDefault();
-    const owner = this.props.currentUser.username
+    const owner = this.props.currentUser.username;
     const title = ReactDOM.findDOMNode(this.refs.title).value.trim();
     const description = ReactDOM.findDOMNode(this.refs.description).value.trim();
 
-    Posts.insert({
-      owner: owner, //owner
-      title: title, //title
-      description: description, //content
-      createdAt: new Date(), //current time
-    });
-    window.location = "blog/" + owner;
+    if(title === "" || description === ""){
+      alert("Please fill in all fields.");
+    }
+    else {
+      Posts.insert({
+        owner: owner, //owner
+        title: title, //title
+        description: description, //content
+        createdAt: new Date(), //current time
+      });
+      window.location = "blog/" + owner;
+    }
   }
   render() {
     if(this.props.currentUser !== null && this.props.currentUser !== undefined){
