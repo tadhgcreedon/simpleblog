@@ -208,6 +208,7 @@ h1 a, h1 a:visited {
   background-color: white;
   color: goldenrod;
   border: 2px solid goldenrod;
+  font-weight: bold;
 }
 
 #modifyPostContainer button:last-child {
@@ -217,6 +218,7 @@ h1 a, h1 a:visited {
   background-color: white;
   color: red;
   border: 2px solid red;
+  font-weight: bold;
 }
 
 /*NewPost component styles*/
