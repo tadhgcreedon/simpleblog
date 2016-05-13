@@ -97,7 +97,10 @@ class Post extends Component {
 
         <textarea className={editableClassName + "postDescription"} ref="description" defaultValue={this.props.post.description} disabled={!this.state.postEditable} />
         </pre>
-        <ModifyPost post={this.props.post} editPostHandler={this.editPost.bind(this)}/>
+        {
+          Meteor.userId() === this.props.post.owner ?
+          <ModifyPost post={this.props.post} editPostHandler={this.editPost.bind(this)}/> : null
+        }
       </div>
     );
 
