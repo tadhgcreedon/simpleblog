@@ -22,14 +22,15 @@ class Blog extends Component {
   showPosts(userPosts) {
     return userPosts.map((post) => {
       return (
-        <Post key={post._id} post={post} />
+        <Post key={post._id} post={post}/>
       );
     });
   }
 
   render() {
-    if(this.props.posts !== null) {
-      userPosts = this.props.posts.filter(post => post.owner === this.props.params.owner);
+    const blogOwner = Meteor.users.findOne({username: this.props.params.owner});
+    if(this.props.posts !== null && blogOwner !== undefined) {
+      userPosts = this.props.posts.filter(post => post.owner === blogOwner._id);
       return(
         <section id="blogContainer" className="contentContainer">
           {
@@ -70,10 +71,7 @@ class Post extends Component {
           alert("Fields cannot be empty.");
           return;
         }
-        console.log("updating");
-        Posts.update(this.props.post._id, {
-          $set: { title: title, description: description, createdAt: new Date(), },
-        });
+        Meteor.call('posts.update', this.props.post._id, title, description);
       }
 
     }
@@ -82,10 +80,10 @@ class Post extends Component {
     });
   }
   render() {
-    const date = this.props.post.createdAt.toDateString();
-    const time = this.props.post.createdAt.toLocaleTimeString();
+    const blogOwnerName = Meteor.users.findOne(this.props.post.owner).username;
+    const date = this.props.post.dateTime.toDateString();
+    const time = this.props.post.dateTime.toLocaleTimeString();
     const editableClassName = this.state.postEditable ? "contentEditable " : "";
-
     return(
       <div className="post">
         <pre>
@@ -94,22 +92,20 @@ class Post extends Component {
 
         &nbsp;|&nbsp;
 
-        by <em>{this.props.post.owner}</em> on {date} at {time}<br/><br/><hr/>
+        by <em>{blogOwnerName}</em> on {date} at {time}<br/><br/><hr/>
 
         <textarea className={editableClassName + "postDescription"} ref="description" defaultValue={this.props.post.description} disabled={!this.state.postEditable} />
         </pre>
-        {
-          <ModifyPost post={this.props.post} editPostHandler={this.editPost.bind(this)}/>
-        }
+        <ModifyPost post={this.props.post} editPostHandler={this.editPost.bind(this)}/>
       </div>
     );
+
   }
 }
 
 class ModifyPost extends Component {
   deletePost(){
-    console.log("Deleting task #" + this.props.post._id);
-    Posts.remove(this.props.post._id);
+    Meteor.call("posts.remove", this.props.post._id);
   }
   editPost() {
     this.props.editPostHandler();
@@ -131,6 +127,7 @@ Blog.propTypes = {
 export default createContainer(() => {
   return {
     currentUser: Meteor.user(),
-    posts: Posts.find({}, { sort: { createdAt: -1 } }).fetch(),
+    currentUserId: Meteor.userId(),
+    posts: Posts.find({}, { sort: { dateTime: -1 } }).fetch(),
   };
 }, Blog);

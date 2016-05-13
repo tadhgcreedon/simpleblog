@@ -32,13 +32,8 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  posts: PropTypes.array.isRequired,
-};
-
 export default createContainer(() => {
   return {
     currentUser: Meteor.user(),
-    posts: Posts.find({}).fetch(),
   };
 }, App);

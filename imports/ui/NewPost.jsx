@@ -18,12 +18,7 @@ class NewPost extends Component {
       alert("Please fill in all fields.");
     }
     else {
-      Posts.insert({
-        owner: owner, //owner
-        title: title, //title
-        description: description, //content
-        createdAt: new Date(), //current time
-      });
+      Meteor.call("posts.insert", title, description);
       window.location = "blog/" + owner;
     }
   }
