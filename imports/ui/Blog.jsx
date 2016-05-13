@@ -82,7 +82,8 @@ class Post extends Component {
     });
   }
   render() {
-    let date = this.props.post.createdAt.toString();
+    const date = this.props.post.createdAt.toDateString();
+    const time = this.props.post.createdAt.toLocaleTimeString();
     const editableClassName = this.state.postEditable ? "contentEditable " : "";
 
     return(
@@ -93,7 +94,7 @@ class Post extends Component {
 
         &nbsp;|&nbsp;
 
-        by <em>{this.props.post.owner}</em> at {date} <br/><br/><hr/>
+        by <em>{this.props.post.owner}</em> on {date} at {time}<br/><br/><hr/>
 
         <textarea className={editableClassName + "postDescription"} ref="description" defaultValue={this.props.post.description} disabled={!this.state.postEditable} />
         </pre>
