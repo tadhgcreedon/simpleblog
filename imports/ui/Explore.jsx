@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Link } from 'react-router';
+import '../api/users.js';
 
 // List of available blogs to view
 class Explore extends Component {
@@ -55,6 +56,8 @@ Explore.propTypes = {
 };
 
 export default createContainer(() => {
+  Meteor.subscribe('users');
+
   return {
     currentUser: Meteor.user(),
     users: Meteor.users.find({}).fetch(),
