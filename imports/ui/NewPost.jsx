@@ -27,7 +27,7 @@ class NewPost extends Component {
       return(
         <section id="newPostContainer" className="contentContainer">
           <form method="post" action={"/blog/" + this.props.currentUser.username} onSubmit={this.handleSubmit.bind(this)}>
-            <input ref="title" required type="text" maxLength="100" placeholder="Title" name="titleInput" />
+            <input ref="title" required type="text" maxLength="50" placeholder="Title" name="titleInput" />
             <br />
             <textarea ref="description" required rows="15" maxLength="1500" placeholder="Content" name="descriptionInput" />
             <br />
@@ -46,7 +46,7 @@ class NewPost extends Component {
 }
 
 export default createContainer(() => {
-  Meteor.subscribe('posts');  
+  Meteor.subscribe('posts');
 
   return {
     currentUser: Meteor.user(),

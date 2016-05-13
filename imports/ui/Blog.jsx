@@ -89,17 +89,19 @@ class Post extends Component {
       <div className="post">
         <pre>
         <input ref="title" className={editableClassName + "postTitle"} defaultValue={this.props.post.title}
-        disabled={!this.state.postEditable} />
+        maxLength="50" disabled={!this.state.postEditable}
+        size={this.state.postEditable ? "50" : this.props.post.title.length} />
 
         &nbsp;|&nbsp;
 
         by <em>{blogOwnerName}</em> on {date} at {time}<br/><br/><hr/>
 
-        <textarea className={editableClassName + "postDescription"} ref="description" defaultValue={this.props.post.description} disabled={!this.state.postEditable} />
+        <textarea className={editableClassName + "postDescription"} ref="description" defaultValue={this.props.post.description} disabled={!this.state.postEditable}
+        rows={this.state.postEditable ? "15" : ""} maxLength="1500" />
         </pre>
         {
           Meteor.userId() === this.props.post.owner ?
-          <ModifyPost post={this.props.post} editPostHandler={this.editPost.bind(this)}/> : null
+          <ModifyPost post={this.props.post} postEditable={this.state.postEditable} editPostHandler={this.editPost.bind(this)}/> : null
         }
       </div>
     );
@@ -117,7 +119,7 @@ class ModifyPost extends Component {
   render(){
     return(
       <div id="modifyPostContainer">
-        <button onClick={this.editPost.bind(this)}>E</button>
+        <button onClick={this.editPost.bind(this)}>{this.props.postEditable ? <span>&#10003;</span> : <span>E</span>}</button>
         <button onClick={this.deletePost.bind(this)}>X</button>
       </div>
     );
