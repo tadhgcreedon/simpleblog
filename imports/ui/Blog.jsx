@@ -4,6 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Link } from 'react-router';
 
 import { Posts } from '../api/posts.js';
+import '../api/users.js';
 
 class Blog extends Component {
   noPosts() {
@@ -126,6 +127,7 @@ Blog.propTypes = {
 
 export default createContainer(() => {
   Meteor.subscribe('posts');
+  Meteor.subscribe('users');
 
   return {
     currentUser: Meteor.user(),
