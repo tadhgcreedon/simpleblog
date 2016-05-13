@@ -125,6 +125,8 @@ Blog.propTypes = {
 };
 
 export default createContainer(() => {
+  Meteor.subscribe('posts');
+
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),

@@ -46,6 +46,8 @@ class NewPost extends Component {
 }
 
 export default createContainer(() => {
+  Meteor.subscribe('posts');  
+
   return {
     currentUser: Meteor.user(),
   };
