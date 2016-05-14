@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router';
 
 import { Posts } from '../api/posts.js';
@@ -92,7 +93,7 @@ class Post extends Component {
         maxLength="50" disabled={!this.state.postEditable}
         size={this.state.postEditable ? "50" : this.props.post.title.length} />
 
-        &nbsp;|&nbsp;
+        {this.state.postEditable ? <span>&nbsp;</span> : null}|
 
         by <em>{blogOwnerName}</em> on {date} at {time}<br/><br/><hr/>
 
