@@ -44,7 +44,7 @@ class Explore extends Component {
 class UserBlogLink extends Component {
   render() {
     return(
-      <li>
+      <li> 
         <Link to={"blog/" + this.props.userName}>{this.props.userName}</Link>
       </li>
     );
