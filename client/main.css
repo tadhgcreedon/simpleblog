@@ -52,10 +52,6 @@ h1 a, h1 a:visited {
   color: black;
 }
 
-#titleWordSimple {
-  
-}
-
 #titleWordBlog {
   color: #27b6db;
 }
@@ -71,6 +67,8 @@ h1 a, h1 a:visited {
   border: 2px solid gray;
   border-radius: 5px;
   padding: 10px;
+  position: absolute;
+  right: 5px;
 }
 #loginContainer:hover {
   background-color: black;
@@ -83,9 +81,9 @@ h1 a, h1 a:visited {
 }
 
 #login-dropdown-list {
-  position: absolute;
-  top: 40px;
-  left: -190px;
+  margin: 0;
+  top: 35px;
+  left: -200px;
 }
 
 
@@ -250,12 +248,20 @@ h1 a, h1 a:visited {
   color:black !important;
 }
 
-
 .contentEditable {
   border: 1px solid gray;
   background-color: lightgray;
   padding: 5px;
   outline: none;
+}
+
+.postTitleLineBreak {
+  display: none;
+}
+
+.postAuthorText {
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 /*NewPost component styles*/
@@ -315,4 +321,19 @@ footer {
   width: 100%;
   height: 15px;
   background-color: black;
+}
+
+/*Media Queries*/
+@media screen and (max-width: 1150px) {
+  span.postTitleDivider {
+    display:none;
+  }
+  .postTitleLineBreak {
+    display: inherit;
+  }
+
+  .post em {
+    font-style: normal;
+    margin-left: 3px;
+  }
 }

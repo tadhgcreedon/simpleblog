@@ -93,9 +93,11 @@ class Post extends Component {
         maxLength="50" disabled={!this.state.postEditable}
         size={this.state.postEditable ? "50" : this.props.post.title.length} />
 
-        {this.state.postEditable ? <span>&nbsp;</span> : null}|
-
-        by <em>{blogOwnerName}</em> on {date} at {time}<br/><br/><hr/>
+        <span class="postAuthorText">
+        {this.state.postEditable ? <span>&nbsp;</span> : null}
+        <span className="postTitleDivider">| by </span><br className="postTitleLineBreak"/>
+         <em>{blogOwnerName}</em> on {date} at {time}<br/><br/><hr/>
+         </span>
 
         <textarea className={editableClassName + "postDescription"} ref="description" defaultValue={this.props.post.description} disabled={!this.state.postEditable}
         rows={this.state.postEditable ? "15" : ""} maxLength="1500" />
