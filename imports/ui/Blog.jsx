@@ -100,7 +100,7 @@ class Post extends Component {
          </span>
 
         <textarea className={editableClassName + "postDescription"} ref="description" defaultValue={this.props.post.description} disabled={!this.state.postEditable}
-        rows={this.state.postEditable ? "15" : ""} maxLength="1500" />
+        rows={this.state.postEditable ? "15" : this.props.post.description.split(/\r\n|\r|\n/).length} maxLength="1500" />
         </pre>
         {
           Meteor.userId() === this.props.post.owner ?
