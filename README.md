@@ -1,9 +1,7 @@
-# simpleblog
-My submission for the Weedmaps Junior Full-Stack Developer technical test.
+### SimpleBlog
 
----
+A elegant, lightweight blogging app with CRUD functionality. 
 
-To run:
+Users can view existing blogs or create their own, then create and manage their own posts.
 
-Download zip file, unzip, run 'meteor npm install --save react react-dom react-router react-addons-pure-render-mixin'
-from a terminal in the project directory and then run 'meteor' in the same directory.
+Production version at: [simpleblog.tadhgcreedon.com](simpleblog.tadhgcreedon.com)
