@@ -6,7 +6,7 @@ export default class Header extends Component {
     return(
       <header>
         <h1><a href="/"><span id="titleWordSimple">simple</span><span id="titleWordBlog">blog</span></a></h1>
-        <span id="authorText">by Tadhg Creedon</span>
+        <span id="authorText">by <a href="http://www.tadhgcreedon.com">Tadhg Creedon</a></span>
         <Login />
       </header>
     );
